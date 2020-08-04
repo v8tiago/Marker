@@ -1,6 +1,6 @@
 using System;
 
-namespace Marker.App.Models
+namespace Marker.App.ViewModels
 {
     public class ErrorViewModel
     {

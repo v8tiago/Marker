@@ -23,4 +23,6 @@ namespace Marker.Data.Mappings
             builder.ToTable( "Salas" );
         }
     }
+
+
 }

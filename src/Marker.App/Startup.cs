@@ -13,6 +13,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Marker.Data.Context;
+using Marker.Business.Interfaces;
+using Marker.Data.Repository;
+using AutoMapper;
 
 namespace Marker.App
 {
@@ -34,11 +37,18 @@ namespace Marker.App
             services.AddDbContext<MeuDbContext>( options =>
      options.UseSqlServer( Configuration.GetConnectionString( "DefaultConnection" ) ) );
 
+            services.AddAutoMapper( typeof( Startup ) );
 
             services.AddDefaultIdentity<IdentityUser>( options => options.SignIn.RequireConfirmedAccount = true )
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+
+            services.AddScoped<MeuDbContext>();
+            services.AddScoped<ISalaRepository, SalaRepository>();
+            services.AddScoped<IReuniaoRepository, ReuniaoRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

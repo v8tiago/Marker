@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Marker.App.ViewModels
 {
@@ -17,9 +15,15 @@ namespace Marker.App.ViewModels
         public Guid SalaId { get; set; }
 
         [ScaffoldColumn(false)]
+        [Required( ErrorMessage = "O campo {0} é obrigatório" )]
+        //[DisplayFormat( ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy hh:mm:ss tt}" )]
+        [DisplayName( "Data Início" )]
         public DateTime DataInicio { get; set; }
 
         [ScaffoldColumn( false )]
+        [Required( ErrorMessage = "O campo {0} é obrigatório" )]
+        //[DisplayFormat( ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy hh:mm:ss tt}" )]
+        [DisplayName( "Data Fim" )]
         public DateTime DataFim { get; set; }
 
         [Required(ErrorMessage ="O campo {0} é obrigatório")]
@@ -29,5 +33,7 @@ namespace Marker.App.ViewModels
         //EF Relations
 
         public SalaViewModel Sala { get; set; }
+
+        public IEnumerable<SalaViewModel> Salas { get; set; }
     }
 }

@@ -1,0 +1,58 @@
+﻿@model Marker.App.ViewModels.ReuniaoViewModel
+@addTagHelper *, Kendo.Mvc
+@removeTagHelper "*, Microsoft.AspNet.Mvc.Razor"
+@removeTagHelper "*, Microsoft.AspNetCore.Mvc.Razor"
+
+@{
+    ViewData["Title"] = "Marcar Reunião";
+}
+
+<h3 style="padding-top:50px">@ViewData["Title"]</h3>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SalaId" class="control-label"></label>
+                <select asp-for="SalaId" class="form-control" asp-items="@(new SelectList(Model.Salas,"Id","Nome"))">
+                    <options></options>
+                </select>
+                <span asp-validation-for="SalaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Assunto" class="control-label"></label>
+                <input asp-for="Assunto" class="form-control" />
+                <span asp-validation-for="Assunto" class="text-danger"></span>
+            </div>
+
+            <div>
+                <label asp-for="DataInicio" class="control-label"></label>
+                <kendo-datetimepicker name="datepicker" 
+                                      for="DataInicio" 
+                                      style="width: 100%;">
+                </kendo-datetimepicker>
+                <span asp-validation-for="DataInicio" class="text-danger"></span>
+            </div>
+
+            <div>
+                <label asp-for="DataFim" class="control-label"></label>
+                <kendo-datetimepicker name='datepicker' 
+                                      for="DataFim" 
+                                      style='width: 100%;'>
+                </kendo-datetimepicker>
+                <span asp-validation-for="DataFim" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                <a class="btn btn-info" asp-action="Index">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync( "_ValidationScriptsPartial" );}
+}

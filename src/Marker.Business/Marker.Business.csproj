@@ -6,8 +6,13 @@
 
   <ItemGroup>
     <Folder Include="Notifications\" />
-    <Folder Include="Validations\" />
     <Folder Include="Services\" />
+    <Folder Include="Validations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="KendoUIProfessional" Version="2020.2.617" />
+    <PackageReference Include="Telerik.UI.for.AspNet.Core" Version="2020.2.617" />
   </ItemGroup>
 
 </Project>

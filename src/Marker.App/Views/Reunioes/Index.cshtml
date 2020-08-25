@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Marker.App.ViewModels.ReuniaoViewModel>
+
+@{
+    ViewData["Title"] = "Reuniões";
+}
+
+<h1 style="padding-top:50px">@ViewData["Title"]</h1>
+
+<p>
+    <a class="btn btn-info" asp-action="Create">Nova Reunião</a>
+</p>
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor( model => model.Assunto )
+            </th>
+            <th>
+                @Html.DisplayNameFor( model => model.Sala )
+            </th>
+            <th>
+                @Html.DisplayNameFor( model => model.DataInicio )
+            </th>
+            <th>
+                @Html.DisplayNameFor( model => model.DataFim )
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor( modelItem => item.Assunto )
+            </td>
+            <td>
+                @Html.DisplayFor( modelItem => item.Sala.Nome )
+            </td>
+            <td>
+                @Html.DisplayFor( modelItem => item.DataInicio)
+            </td>
+            <td>
+                @Html.DisplayFor( modelItem => item.DataFim)
+            </td>
+            <td class="text-right">
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
